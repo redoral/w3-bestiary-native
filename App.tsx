@@ -6,8 +6,12 @@ import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import reducer from './src/redux/reducer';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MainScreen from './src/screens/Main';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
+import MonsterScreen from './src/screens/Monster';
+import AllMonstersScreen from './src/screens/AllMonsters';
 
 const sagaMiddleWare = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -16,7 +20,7 @@ export type RootStore = ReturnType<typeof reducer>;
 
 // sagaMiddleWare.run()
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -25,10 +29,15 @@ export default function App() {
         <StatusBar style='light' />
         <Stack.Navigator
           screenOptions={{
-            headerShown: false,
+            ...TransitionPresets.SlideFromRightIOS,
           }}
         >
-          <Stack.Screen name='Main' component={MainScreen} />
+          <Stack.Screen
+            name='Main'
+            component={AllMonstersScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name='Monster' component={MonsterScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

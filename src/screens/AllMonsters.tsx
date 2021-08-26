@@ -7,6 +7,7 @@ import {
   View,
   StyleSheet,
   ImageBackground,
+  Dimensions,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../App';
@@ -14,10 +15,16 @@ import ListRenderItem from '../components/all-monsters/ListRenderItem';
 import { getAllMonsters } from '../redux/actions';
 
 const AllMonstersScreen: React.FC = () => {
+  const [query, setQuery] = React.useState('');
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(getAllMonsters());
+
+    return function cleanup() {
+      setQuery('');
+    };
   }, []);
 
   const allMonsters = useSelector((state: RootStore) => state.allMonsters).sort(
@@ -27,30 +34,53 @@ const AllMonstersScreen: React.FC = () => {
   );
 
   const renderItem = ({ item }: any) => {
-    return <ListRenderItem name={item.name} img={item.img} type={item.type} />;
+    return (
+      <ListRenderItem name={item.name} img={item.image} type={item.type} />
+    );
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#111' }}>
       <ImageBackground
         source={{
-          uri: 'https://wallpaperaccess.com/full/2812342.jpg',
+          uri: 'https://images.wallpapersden.com/image/download/geralt-of-rivia-the-witcher-3_a2Zuam2UmZqaraWkpJRmZW1lrWdpZWU.jpg',
         }}
         resizeMode='cover'
-        style={{ flex: 1, justifyContent: 'center' }}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height,
+        }}
       >
-        <Text style={styles.headingText}>All monsters</Text>
-        <TextInput
-          placeholder='Search...'
-          placeholderTextColor='#fefefe'
-          style={styles.searchBar}
-        />
+        <Text style={styles.headingText}> Bestiary</Text>
+        <View
+          style={{
+            alignItems: 'center',
+          }}
+        >
+          <TextInput
+            placeholder='Search...'
+            placeholderTextColor='#333'
+            style={styles.searchBar}
+            onChangeText={(value: any) => setQuery(value)}
+          />
+        </View>
         <View style={styles.flatList}>
           <FlatList
-            data={allMonsters}
+            data={
+              query === ''
+                ? allMonsters
+                : allMonsters.filter((item) => {
+                    return item.name
+                      .toLowerCase()
+                      .includes(query.toLowerCase());
+                  })
+            }
             renderItem={renderItem}
             keyExtractor={(item) => item.name}
-            style={{ paddingTop: 15 }}
+            style={{ paddingTop: 15, flex: 1 }}
           />
         </View>
       </ImageBackground>
@@ -71,21 +101,21 @@ const styles = StyleSheet.create({
 
   flatList: {
     flex: 1,
-    borderTopEndRadius: 30,
-    borderTopStartRadius: 30,
+    borderTopEndRadius: 35,
+    borderTopStartRadius: 35,
     overflow: 'hidden',
     backgroundColor: '#111',
   },
 
   searchBar: {
-    padding: 10,
-    color: '#fff',
+    padding: 13,
+    color: '#111',
     marginBottom: 15,
     marginLeft: 10,
     marginRight: 10,
-    width: 370,
-    borderRadius: 10,
-    backgroundColor: 'rgba(255,255,255, 0.2)',
+    width: 350,
+    borderRadius: 15,
+    backgroundColor: 'rgba(255,255,255, 0.9)',
   },
 });
 

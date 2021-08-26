@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 interface IProps {
@@ -8,18 +9,24 @@ interface IProps {
 }
 
 const ListRenderItem: React.FC<IProps> = ({ name, img, type }) => {
+  const navigation = useNavigation<any>();
+
   return (
-    <TouchableOpacity style={styles.wrapper}>
+    <TouchableOpacity
+      style={styles.wrapper}
+      onPress={() => navigation.navigate('Monster')}
+    >
       <View
         style={{
-          backgroundColor: '#',
+          backgroundColor: '#222',
           overflow: 'hidden',
           borderRadius: 50,
+          marginLeft: 5,
         }}
       >
         <Image
           source={{
-            uri: 'https://static.wikia.nocookie.net/witcher/images/0/07/Tw3_journal_bear.png/revision/latest/scale-to-width-down/350?cb=20160304204324',
+            uri: img,
           }}
           style={{
             width: 50,
@@ -38,7 +45,7 @@ const ListRenderItem: React.FC<IProps> = ({ name, img, type }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    padding: 10,
+    padding: 15,
     flex: 1,
     backgroundColor: '#111',
     alignItems: 'center',
@@ -47,13 +54,13 @@ const styles = StyleSheet.create({
 
   nameText: {
     color: '#ffffff',
-    marginLeft: 10,
+    marginLeft: 15,
     fontWeight: '700',
   },
 
   typeText: {
     color: '#fefefe',
-    marginLeft: 10,
+    marginLeft: 15,
   },
 });
 
