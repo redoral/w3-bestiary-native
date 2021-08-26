@@ -16,6 +16,7 @@ export type Monster = {
 };
 
 export enum AppActions {
+  ERROR,
   LOADING,
   UPDATE_ALL_MONSTERS,
   UPDATE_MONSTERS_BY_TYPE,
