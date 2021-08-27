@@ -5,16 +5,18 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 interface IProps {
   name: string;
   type: string;
-  img: string;
+  image: string;
+  loot: [];
+  susceptibility: [];
 }
 
-const ListRenderItem: React.FC<IProps> = ({ name, img, type }) => {
+const ListRenderItem: React.FC<IProps> = (props: IProps) => {
   const navigation = useNavigation<any>();
 
   return (
     <TouchableOpacity
       style={styles.wrapper}
-      onPress={() => navigation.navigate('Monster')}
+      onPress={() => navigation.navigate('Monster', props)}
     >
       <View
         style={{
@@ -26,7 +28,7 @@ const ListRenderItem: React.FC<IProps> = ({ name, img, type }) => {
       >
         <Image
           source={{
-            uri: img,
+            uri: props.image,
           }}
           style={{
             width: 50,
@@ -36,8 +38,8 @@ const ListRenderItem: React.FC<IProps> = ({ name, img, type }) => {
         />
       </View>
       <View>
-        <Text style={styles.nameText}>{name}</Text>
-        <Text style={styles.typeText}>{type}</Text>
+        <Text style={styles.nameText}>{props.name}</Text>
+        <Text style={styles.typeText}>{props.type}</Text>
       </View>
     </TouchableOpacity>
   );
