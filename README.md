@@ -1,2 +1,2 @@
-# w3-bestiary-native
-A React Native application for my Witcher 3 Bestiary API.
+# Witcher 3 Bestiary Native
+A React Native application for my Witcher 3 Bestiary API. I'll work on this README later.
