@@ -29,6 +29,7 @@ export default function App() {
         <StatusBar style='light' />
         <Stack.Navigator
           screenOptions={{
+            headerTransparent: true,
             ...TransitionPresets.SlideFromRightIOS,
           }}
         >
@@ -37,7 +38,13 @@ export default function App() {
             component={AllMonstersScreen}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name='Monster' component={MonsterScreen} />
+          <Stack.Screen
+            name='Monster'
+            component={MonsterScreen}
+            options={{
+              headerTitle: '',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

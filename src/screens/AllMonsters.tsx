@@ -35,7 +35,13 @@ const AllMonstersScreen: React.FC = () => {
 
   const renderItem = ({ item }: any) => {
     return (
-      <ListRenderItem name={item.name} img={item.image} type={item.type} />
+      <ListRenderItem
+        name={item.name}
+        image={item.image}
+        type={item.type}
+        loot={item.loot}
+        susceptibility={item.susceptibility}
+      />
     );
   };
 
