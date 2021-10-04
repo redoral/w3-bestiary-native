@@ -7,7 +7,6 @@ import {
   SafeAreaView,
   Dimensions,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import { color } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -114,9 +113,6 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.deleteButton}>
-          <Text style={styles.deleteButtonText}>Delete</Text>
-        </TouchableOpacity>
       </ImageBackground>
     </SafeAreaView>
   );

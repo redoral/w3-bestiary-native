@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 10,
     marginRight: 10,
-    width: 350,
+    width: '95%',
     borderRadius: 15,
     backgroundColor: 'rgba(255,255,255, 0.9)',
   },
