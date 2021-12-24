@@ -16,7 +16,7 @@ interface IProps {
     params: {
       name: string;
       type: string;
-      image: string;
+      img: string;
       loot: [];
       susceptibility: [];
     };
@@ -46,7 +46,7 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
       >
         <View style={styles.monsterImgContainer}>
           <Image
-            source={{ uri: route.params.image }}
+            source={{ uri: route.params.img }}
             style={{ width: 250, height: 250 }}
             resizeMode='contain'
           />

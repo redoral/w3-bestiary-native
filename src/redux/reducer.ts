@@ -14,7 +14,7 @@ const defaultState: IAppState = {
     name: '',
     type: '',
     img: '',
-    susceptiblity: [],
+    susceptibility: [],
     loot: [],
   },
 };

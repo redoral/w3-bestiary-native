@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 interface IProps {
   name: string;
   type: string;
-  image: string;
+  img: string;
   loot: [];
   susceptibility: [];
 }
@@ -28,7 +28,7 @@ const ListRenderItem: React.FC<IProps> = (props: IProps) => {
       >
         <Image
           source={{
-            uri: props.image,
+            uri: props.img,
           }}
           style={{
             width: 50,

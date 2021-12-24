@@ -10,7 +10,7 @@ export type Monster = {
   id: number;
   name: string;
   type: string;
-  image: string;
+  img: string;
   susceptibility: [];
   loot: [];
 };
