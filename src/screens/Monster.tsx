@@ -6,9 +6,8 @@ import {
   ImageBackground,
   SafeAreaView,
   Dimensions,
-  StyleSheet,
+  StyleSheet
 } from 'react-native';
-import { color } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface IProps {
@@ -28,7 +27,7 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#111' }}>
       <ImageBackground
         source={{
-          uri: 'https://images5.alphacoders.com/869/869912.jpg',
+          uri: 'https://images5.alphacoders.com/869/869912.jpg'
         }}
         resizeMode='cover'
         style={{
@@ -37,13 +36,12 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
           left: 0,
           top: 0,
           width: Dimensions.get('window').width,
-          height: Dimensions.get('window').height,
+          height: Dimensions.get('window').height
         }}
         imageStyle={{
           top: undefined,
-          bottom: 400,
-        }}
-      >
+          bottom: 400
+        }}>
         <View style={styles.monsterImgContainer}>
           <Image
             source={{ uri: route.params.img }}
@@ -61,9 +59,8 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
               height: 5,
               backgroundColor: '#efefef',
               borderRadius: 10,
-              marginTop: 10,
-            }}
-          ></View>
+              marginTop: 10
+            }}></View>
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <View style={styles.card}>
               <Text style={styles.cardTitleText}>
@@ -74,11 +71,7 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
                 {route.params.loot.map((item) => {
                   return (
                     <Text style={styles.cardText} key={item}>
-                      <MaterialCommunityIcons
-                        name='gold'
-                        color='#efefef'
-                        size={12}
-                      />
+                      <MaterialCommunityIcons name='gold' color='#efefef' size={12} />
                       {'  ' + item}
                     </Text>
                   );
@@ -88,11 +81,7 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
             <View style={styles.card}>
               <Text style={styles.cardTitleText}>
                 {' '}
-                <MaterialCommunityIcons
-                  name='bullseye-arrow'
-                  color='#efefef'
-                  size={24}
-                />
+                <MaterialCommunityIcons name='bullseye-arrow' color='#efefef' size={24} />
                 {' ' + ' Susceptibility'}
               </Text>
 
@@ -100,11 +89,7 @@ const MonsterScreen: React.FC<IProps> = ({ route }) => {
                 {route.params.susceptibility.map((item) => {
                   return (
                     <Text style={styles.cardText} key={item}>
-                      <MaterialCommunityIcons
-                        name='sword'
-                        color='#efefef'
-                        size={12}
-                      />
+                      <MaterialCommunityIcons name='sword' color='#efefef' size={12} />
                       {'  ' + item}
                     </Text>
                   );
@@ -123,13 +108,13 @@ const styles = StyleSheet.create({
     flex: 0.5,
     alignContent: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
 
   monsterNameText: {
     fontWeight: '700',
     color: '#ffffff',
-    fontSize: 24,
+    fontSize: 24
   },
 
   deleteButton: {
@@ -139,17 +124,17 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: 15
   },
 
   deleteButtonText: {
     fontWeight: '700',
-    color: '#c62828',
+    color: '#c62828'
   },
 
   monsterTypeText: {
     color: '#fefefe',
-    fontSize: 16,
+    fontSize: 16
   },
 
   monsterInfo: {
@@ -160,7 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     padding: 20,
     alignItems: 'center',
-    backgroundColor: '#111',
+    backgroundColor: '#111'
   },
 
   card: {
@@ -169,18 +154,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#222',
     flex: 1,
-    borderRadius: 15,
+    borderRadius: 15
   },
 
   cardTitleText: {
     fontWeight: '700',
     color: '#fff',
-    fontSize: 14,
+    fontSize: 14
   },
 
   cardText: {
-    color: '#fefefe',
-  },
+    color: '#fefefe'
+  }
 });
 
 export default MonsterScreen;
